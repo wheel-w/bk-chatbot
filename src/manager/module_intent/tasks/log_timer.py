@@ -33,7 +33,7 @@ def task_status_timer():
     logger.info(f"[{_task_id}]task_status_timer start task")
     try:
         redis_client = RedisClient()
-        get_lock_ok = redis_client.set_nx("task_status_timer", 1, 600)
+        get_lock_ok = redis_client.set_nx("task_status_timer", 1, 300)
         if not get_lock_ok:
             logger.info(f"[{_task_id}]task_status_timer get lock fail,skip")
             return
